@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>SMB Share :: Modify Share</title>
+<link rel="stylesheet" href="/static/css/blueprint/screen.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/static/css/blueprint/print.css" type="text/css" media="print">    
+<!--[if IE]><link rel="stylesheet" href="/static/css/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+</head>
+<body>
+<h1>Modify Share</h1>
+
+{% if share %}
+<form action="/manager/{{ share.name }}/modify/" method="post">
+        <ul>
+          <li>
+          {{ s.name }} &nbsp;Modify
+          <ul>
+            <li>
+            {{ s.group }} {% for g in groups %} {% ifequal g.name s.group %}({% for l in g.members%} {{ l }}, {% endfor %}){% endifequal %} {% endfor %}
+            </li>
+          </ul>
+        {% endfor %}
+        </ul>
+{% endif %}
+
+Add a new share
+<hr>
+<!-- hhmts start -->Last modified: Thu Dec  4 19:41:58 IST 2008 <!-- hhmts end -->
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+<link rel="stylesheet" href="/static/css/core.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/static/css/cmxform.css" type="text/css" media="screen, projection">
+<link rel="stylesheet" href="/static/css/reset.css" type="text/css" media="screen, projection">
+
+<title>SMB Shares :: List shares</title>
+</head>
+<body>
+<h2>SMB Shares :: Manage your Shares</h2>
+
+<div id="container">
+
+{% if shares %}
+  <p>
+  <ul>
+    {% for s in shares %}
+    <li>
+    {{ s.name }} &nbsp;[<a href="/manager/{{ s.name }}/edit" >Modify</a>]&nbsp;[<a href="/manager/{{ s.name }}/remove" >Del</a>]
+    <ul class="inner">
+      <li>
+      Group: <b>{{ s.group }}</b> {% for g in groups %} {% ifequal g.name s.group %}({% for l in g.members%} {{ l }}, {% endfor %}){% endifequal %} {% endfor %}
+      </li>
+    </ul>
+    {% endfor %}
+  </ul>
+  </p>
+{% endif %}
+</div>
+
+<a class="links" href="/manager/form" >Add a new share</a>
+
+<div class="footer">
+  supported by <a class="links" href="http://www.informedia.co.in/" >informedia technologies</a>. mail <a class="links" href="mailto:support@inf.in" >support@inf.in</a>
+</div>
+
+
+
+</body>
+</html>
